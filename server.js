@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //routes to api.js and html.js files
-require("routes/apiRoute.js")(app);
-require("routes/htmlRoute")(app);
+require("./routes/apiRoute.js")(app);
+require("./routes/htmlRoute.js")(app);
 
 app.listen (PORT, ()=> {
  console.log("Listening on PORT  http://localhost:" + PORT)

@@ -1,4 +1,4 @@
-var noteContent = [
+var noteContents = [
     {
     "title":"Test Title 1",
     "text":"Test text",
@@ -12,4 +12,4 @@ var noteContent = [
     
 ];
 
-module.exports = noteContent;
+module.exports = noteContents;
