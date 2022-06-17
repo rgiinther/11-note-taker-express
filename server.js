@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path =require('path')
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,8 +12,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //routes to api.js and html.js files
-require("./routes/apiRoute.js")(app);
-require("./routes/htmlRoute.js")(app);
+
+const apiRouter = require("./routes/apiRoute.js");
+const apiRouter2 = require("./routes/htmlRoute.js");
+
+app.use("/api", apiRouter);
+app.use('/api', apiRouter2);
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
 
 app.listen (PORT, ()=> {
  console.log("Listening on PORT  http://localhost:" + PORT)

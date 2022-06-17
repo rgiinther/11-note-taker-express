@@ -1,5 +1,5 @@
 // Linking the noteContents in db to this routes.
-var noteContents = require("../db/noteContents")
+var noteContents = require("db/notesContents.js")
 
 //Create promise-based versions of functions using node style callbacks
 const fs = require("fs");
@@ -28,7 +28,7 @@ module.exports = function(app) {
         noteContents.push(newNote);
 
         // write to the noteContents.json file as well
-        writeFileAsync("./db/noteContents.json", JSON.stringify(noteContents)).then(function() {
+        writeFileAsync("db/noteContents.json", JSON.stringify(noteContents)).then(function() {
             console.log("noteContents.json has been updated!");
         });
 
@@ -50,7 +50,7 @@ module.exports = function(app) {
                 
                 let noteJSON = JSON.stringify(noteContents, null, 2);
                 //using placeholders from .json file
-                writeFileAsync("./db/noteContents.json", noteJSON).then(function() {
+                writeFileAsync("db/noteContents.json", noteJSON).then(function() {
                 console.log ("Chosen note has been deleted!");
             });                 
             }
