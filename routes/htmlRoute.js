@@ -1,17 +1,18 @@
 // Path package to get the file path for the html
 var path = require("path");
-
+const router = require('express').Router();
 // Create a route
-// Basic routes that sends the user first to the AJAX page, get the html so that the user can see the page from front-end.
 
-module.exports = function(app) {
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
-    app.get("/notes", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/notes.html"));
-    });
+router.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/notes.html'));
+});
 
-    app.get("*", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
+router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
-};
+module.exports = router
