@@ -3,21 +3,21 @@
 const path = require('path');
 const fs = require('fs');
 const router = require('express').Router();
-const { createNewNote, noteDelete } = require('../lib/notesContents.js');
+const { createNewNote, noteDelete } = require('../lib/notes.js');
 
 const notes = require('../db/db.json');
 console.log(notes);
 
 // routes
 
+router.get('/notes', (req, res) => {
+   
+    let results = notes
+    console.log(results)
+    res.json(results)
+    
+});
 
-    //Display all notes
-    router.get("/notes", function(req, res) {
-        let results = notes;
-        console.log(results);
-        res.json(results);
-    });
-//create note
 router.post('/notes', (req, res) => {
     let Note = createNewNote(req.body, notes)
     console.log(Note)
