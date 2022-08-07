@@ -79,7 +79,7 @@ const handleNoteSave = () => {
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
-  // prevents the click listener for the list from being called when the button inside of it is clicked
+  // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
 
   const note = e.target;
@@ -118,9 +118,7 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
- 
   let jsonNotes = await notes.json();
-  console.log(jsonNotes);
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
@@ -133,6 +131,7 @@ const renderNoteList = async (notes) => {
     liEl.classList.add('list-group-item');
 
     const spanEl = document.createElement('span');
+    spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
     spanEl.addEventListener('click', handleNoteView);
 
