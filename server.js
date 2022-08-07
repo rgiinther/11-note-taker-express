@@ -1,14 +1,16 @@
-const express = require('express');
+
 const path =require('path');
 const fs = require('fs')
-const apiRoute = require("./routes/apiRoute.js");
-const htmlRoute = require("./routes/htmlRoute.js");
 
-const PORT = process.env.PORT || 3001;
+
+const apiRoute = require("./routes/apiRoutes/apiRoute");
+const htmlRoute = require("./routes/htmlRoutes/index.js");
+
+
+const express = require('express');
+
+const PORT = process.env.PORT || 3002;
 const app = express();
-
-//what folder the browser can see
-app.use(express.static("public"));
 
 //routes to api.js and html.js files
 
